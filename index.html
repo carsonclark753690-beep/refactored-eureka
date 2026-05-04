@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Lumen — the AI-native workspace that turns scattered work into shipped outcomes. Built for teams who move." />
+  <title>Lumen — Work that ships itself</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='10' fill='%233B82F6'/%3E%3Ccircle cx='16' cy='16' r='5' fill='%23F8FAFC'/%3E%3C/svg%3E" />
+</head>
+<body>
+  <div class="bg-grid" aria-hidden="true"></div>
+  <div class="bg-orb bg-orb--1" aria-hidden="true"></div>
+  <div class="bg-orb bg-orb--2" aria-hidden="true"></div>
+
+  <header class="nav" id="nav">
+    <a class="nav__brand" href="#top" aria-label="Lumen home">
+      <span class="brand-mark" aria-hidden="true">
+        <svg viewBox="0 0 32 32" width="28" height="28">
+          <defs>
+            <radialGradient id="bm" cx="50%" cy="50%" r="50%">
+              <stop offset="0%" stop-color="#F8FAFC"/>
+              <stop offset="60%" stop-color="#3B82F6"/>
+              <stop offset="100%" stop-color="#0B0B10"/>
+            </radialGradient>
+          </defs>
+          <circle cx="16" cy="16" r="14" fill="url(#bm)"/>
+        </svg>
+      </span>
+      <span class="brand-name">Lumen</span>
+    </a>
+    <nav class="nav__links" aria-label="Primary">
+      <a href="#features">Features</a>
+      <a href="#showcase">Showcase</a>
+      <a href="#pricing">Pricing</a>
+      <a href="#changelog">Changelog</a>
+    </nav>
+    <div class="nav__cta">
+      <a class="btn btn--ghost" href="#login">Sign in</a>
+      <a class="btn btn--primary" href="#start">Start free
+        <svg viewBox="0 0 16 16" width="14" height="14" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </a>
+    </div>
+    <button class="nav__toggle" aria-label="Open menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </header>
+
+  <main id="top">
+    <section class="hero">
+      <div class="hero__inner">
+        <a class="pill reveal" href="#changelog">
+          <span class="pill__dot"></span>
+          <span>New · Lumen 4.7 — agents that ship PRs</span>
+          <svg viewBox="0 0 16 16" width="12" height="12" aria-hidden="true"><path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+        <h1 class="hero__title reveal">
+          Work that <span class="gradient-text">ships itself.</span>
+        </h1>
+        <p class="hero__sub reveal">
+          Lumen is the AI-native workspace where docs, tasks, and code converge.
+          Plan in plain language, ship in production, and keep the whole team in flow.
+        </p>
+        <div class="hero__cta reveal">
+          <a class="btn btn--primary btn--lg" href="#start">
+            Start building free
+            <svg viewBox="0 0 16 16" width="14" height="14" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.8" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
+          <a class="btn btn--ghost btn--lg" href="#demo">
+            <svg viewBox="0 0 16 16" width="14" height="14" aria-hidden="true"><path d="M5 3l8 5-8 5V3z" fill="currentColor"/></svg>
+            Watch 90-second demo
+          </a>
+        </div>
+        <div class="hero__meta reveal">
+          <span><span class="dot dot--green"></span> No credit card</span>
+          <span><span class="dot dot--blue"></span> SOC 2 Type II</span>
+          <span><span class="dot dot--violet"></span> Free for 5 seats</span>
+        </div>
+      </div>
+
+      <div class="hero__panel reveal">
+        <div class="panel-window" aria-hidden="true">
+          <div class="panel-window__bar">
+            <span class="dot dot--red"></span><span class="dot dot--amber"></span><span class="dot dot--green"></span>
+            <div class="panel-window__url">lumen.app/workspace/atlas</div>
+          </div>
+          <div class="panel-window__body">
+            <aside class="panel-side">
+              <div class="panel-side__group">
+                <div class="panel-side__title">Workspaces</div>
+                <div class="panel-side__item is-active">
+                  <span class="ws-mark"></span>Atlas
+                </div>
+                <div class="panel-side__item"><span class="ws-mark ws-mark--2"></span>Helios</div>
+                <div class="panel-side__item"><span class="ws-mark ws-mark--3"></span>Nova</div>
+              </div>
+              <div class="panel-side__group">
+                <div class="panel-side__title">Today</div>
+                <div class="panel-side__item">Roadmap Q3</div>
+                <div class="panel-side__item">Auth migration</div>
+                <div class="panel-side__item">Onboarding flow</div>
+              </div>
+            </aside>
+            <section class="panel-main">
+              <div class="panel-main__head">
+                <div class="panel-main__title">Auth migration · OAuth → JWT</div>
+                <div class="panel-main__chips">
+                  <span class="chip chip--blue">In progress</span>
+                  <span class="chip">3 agents</span>
+                </div>
+              </div>
+              <div class="panel-cards">
+                <div class="card-task">
+                  <div class="card-task__row"><span class="check check--done"></span><span>Audit existing session middleware</span></div>
+                  <div class="card-task__row"><span class="check check--done"></span><span>Draft RFC and circulate</span></div>
+                  <div class="card-task__row"><span class="check"></span><span>Implement refresh-token rotation</span></div>
+                  <div class="card-task__row card-task__row--ai">
+                    <span class="check check--ai"></span>
+                    <span>Lumen agent drafted PR <em>#482</em> · 18 files changed</span>
+                  </div>
+                </div>
+                <div class="card-chart">
+                  <div class="card-chart__head">
+                    <div>
+                      <div class="card-chart__title">Cycle time</div>
+                      <div class="card-chart__value">2.4d <span>−38%</span></div>
+                    </div>
+                    <div class="card-chart__legend">
+                      <span><i></i>This sprint</span>
+                      <span><i class="muted"></i>Last sprint</span>
+                    </div>
+                  </div>
+                  <svg class="spark" viewBox="0 0 320 90" preserveAspectRatio="none" aria-hidden="true">
+                    <defs>
+                      <linearGradient id="g1" x1="0" x2="0" y1="0" y2="1">
+                        <stop offset="0%" stop-color="#3B82F6" stop-opacity=".5"/>
+                        <stop offset="100%" stop-color="#3B82F6" stop-opacity="0"/>
+                      </linearGradient>
+                    </defs>
+                    <path d="M0 70 C 40 60, 60 40, 90 45 S 150 75, 180 50 220 20, 260 30 300 60, 320 35 L320 90 L0 90 Z" fill="url(#g1)"/>
+                    <path d="M0 70 C 40 60, 60 40, 90 45 S 150 75, 180 50 220 20, 260 30 300 60, 320 35" stroke="#3B82F6" stroke-width="2" fill="none"/>
+                    <path d="M0 80 C 40 75, 60 65, 90 70 S 150 80, 180 75 220 65, 260 70 300 75, 320 70" stroke="#475569" stroke-width="1.5" stroke-dasharray="3 3" fill="none"/>
+                  </svg>
+                </div>
+              </div>
+              <div class="panel-prompt">
+                <span class="panel-prompt__label">Ask Lumen</span>
+                <span class="panel-prompt__text"><span class="typing">Generate migration checklist and assign engineers</span><span class="caret">▍</span></span>
+                <span class="panel-prompt__kbd">⌘K</span>
+              </div>
+            </section>
+          </div>
+        </div>
+        <div class="hero__chip hero__chip--1" aria-hidden="true">
+          <span class="hero__chip-icon">
+            <svg viewBox="0 0 16 16" width="14" height="14"><path d="M3 8l3 3 7-7" stroke="#22c55e" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </span>
+          PR #482 merged · build green
+        </div>
+        <div class="hero__chip hero__chip--2" aria-hidden="true">
+          <span class="avatars">
+            <span class="ava ava--1">M</span>
+            <span class="ava ava--2">A</span>
+            <span class="ava ava--3">K</span>
+          </span>
+          3 teammates online
+        </div>
+      </div>
+    </section>
+
+    <section class="logos" aria-label="Trusted by">
+      <p class="logos__label">Trusted by teams shipping at speed</p>
+      <div class="logos__row">
+        <span class="logo-text">VERTEX</span>
+        <span class="logo-text">north★star</span>
+        <span class="logo-text">orbital/</span>
+        <span class="logo-text">Halcyon</span>
+        <span class="logo-text">RIVET</span>
+        <span class="logo-text">paloma</span>
+        <span class="logo-text">Quanta⌁</span>
+      </div>
+    </section>
+
+    <section class="features" id="features">
+      <header class="section-head">
+        <span class="eyebrow">Why Lumen</span>
+        <h2 class="section-title">A workspace that does the boring work, so you do the best work.</h2>
+        <p class="section-sub">One surface for plans, code, docs, and decisions — wired together by agents that already know your stack.</p>
+      </header>
+
+      <div class="feature-grid">
+        <article class="feature feature--lg">
+          <div class="feature__icon">
+            <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M12 3v3M12 18v3M3 12h3M18 12h3M5.6 5.6l2.1 2.1M16.3 16.3l2.1 2.1M5.6 18.4l2.1-2.1M16.3 7.7l2.1-2.1"/>
+              <circle cx="12" cy="12" r="3.5"/>
+            </svg>
+          </div>
+          <h3>Agents that ship code</h3>
+          <p>Spawn agents from any task. They open PRs, write tests, and post diffs you can actually review — not summaries.</p>
+          <div class="feature__visual feature__visual--code" aria-hidden="true">
+            <div class="code">
+              <span><i class="t-key">function</i> <i class="t-fn">migrate</i>() {</span>
+              <span class="indent"><i class="t-key">const</i> users = <i class="t-fn">load</i>(<i class="t-str">'auth_v1'</i>)</span>
+              <span class="indent"><i class="t-cmt">// Lumen: rotate refresh tokens</i></span>
+              <span class="indent"><i class="t-key">return</i> users.<i class="t-fn">map</i>(<i class="t-fn">rotate</i>)</span>
+              <span>}</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="feature">
+          <div class="feature__icon">
+            <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <rect x="3" y="4" width="18" height="16" rx="3"/>
+              <path d="M3 9h18M8 14h6"/>
+            </svg>
+          </div>
+          <h3>Docs that stay alive</h3>
+          <p>Specs update themselves as code lands. No more 6-month-old roadmaps lying about reality.</p>
+        </article>
+
+        <article class="feature">
+          <div class="feature__icon">
+            <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M4 4h6v6H4zM14 4h6v6h-6zM4 14h6v6H4zM14 14h6v6h-6z"/>
+            </svg>
+          </div>
+          <h3>Plans you can run</h3>
+          <p>Roadmaps double as live boards. Drag a milestone, watch the team's calendar reshape itself.</p>
+        </article>
+
+        <article class="feature">
+          <div class="feature__icon">
+            <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M12 2l3 6 7 1-5 5 1 7-6-3-6 3 1-7-5-5 7-1z"/>
+            </svg>
+          </div>
+          <h3>Context, kept</h3>
+          <p>Slack, Linear, GitHub, Figma — Lumen reads them all and remembers what matters.</p>
+        </article>
+
+        <article class="feature feature--lg">
+          <div class="feature__icon">
+            <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M3 12h4l3-7 4 14 3-7h4"/>
+            </svg>
+          </div>
+          <h3>Telemetry that tells the truth</h3>
+          <p>Cycle time, review depth, deploy frequency — calculated honestly, never gameable.</p>
+          <div class="feature__visual feature__visual--bars" aria-hidden="true">
+            <div class="bars">
+              <span style="--h:36%"></span><span style="--h:62%"></span><span style="--h:48%"></span>
+              <span style="--h:80%"></span><span style="--h:55%"></span><span style="--h:90%"></span>
+              <span style="--h:70%"></span><span style="--h:42%"></span><span style="--h:85%"></span>
+              <span style="--h:60%"></span><span style="--h:75%"></span><span style="--h:95%"></span>
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="showcase" id="showcase">
+      <header class="section-head">
+        <span class="eyebrow">Built for the way you work</span>
+        <h2 class="section-title">From idea to production — one continuous surface.</h2>
+      </header>
+
+      <div class="showcase__grid">
+        <button class="show-tab is-active" data-tab="plan">Plan</button>
+        <button class="show-tab" data-tab="build">Build</button>
+        <button class="show-tab" data-tab="ship">Ship</button>
+        <button class="show-tab" data-tab="learn">Learn</button>
+      </div>
+
+      <div class="show-stage">
+        <div class="show-pane is-active" data-pane="plan">
+          <div>
+            <h3>Plan in plain language.</h3>
+            <p>Type a sentence, get a milestone. Lumen breaks goals into tasks, owners, and dates — then keeps them in sync as the world changes.</p>
+            <ul class="check-list">
+              <li>Natural-language project briefs</li>
+              <li>Auto-generated dependencies</li>
+              <li>Capacity planning across squads</li>
+            </ul>
+          </div>
+          <div class="show-mock">
+            <div class="mock-list">
+              <div class="mock-row"><span class="dot dot--blue"></span> Auth migration<span class="mock-meta">8 tasks · @maya</span></div>
+              <div class="mock-row"><span class="dot dot--violet"></span> Onboarding redesign<span class="mock-meta">12 tasks · @kai</span></div>
+              <div class="mock-row"><span class="dot dot--green"></span> Public API v3<span class="mock-meta">4 tasks · @ari</span></div>
+              <div class="mock-row mock-row--ghost"><span class="dot"></span> Add realtime presence<span class="mock-meta">drafting…</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="stats">
+      <div class="stat">
+        <div class="stat__num" data-count="38">0</div><span>%</span>
+        <div class="stat__label">Faster cycle time</div>
+      </div>
+      <div class="stat">
+        <div class="stat__num" data-count="12">0</div><span>×</span>
+        <div class="stat__label">More PRs reviewed</div>
+      </div>
+      <div class="stat">
+        <div class="stat__num" data-count="99">0</div><span>.99%</span>
+        <div class="stat__label">Uptime SLA</div>
+      </div>
+      <div class="stat">
+        <div class="stat__num" data-count="4">0</div><span>k+</span>
+        <div class="stat__label">Teams shipping</div>
+      </div>
+    </section>
+
+    <section class="testimonials">
+      <header class="section-head">
+        <span class="eyebrow">Loved by makers</span>
+        <h2 class="section-title">Quotes that aren't just on a slide.</h2>
+      </header>
+      <div class="quote-grid">
+        <figure class="quote">
+          <blockquote>"It feels like the whole team got 30% sharper overnight. The agents do the gruntwork, we do the thinking."</blockquote>
+          <figcaption><span class="ava ava--1">M</span>Maya Park · Eng lead, Vertex</figcaption>
+        </figure>
+        <figure class="quote quote--accent">
+          <blockquote>"We replaced four tools with Lumen and our planning meetings dropped from 90 minutes to 15."</blockquote>
+          <figcaption><span class="ava ava--2">A</span>Ari Tanaka · Founder, Halcyon</figcaption>
+        </figure>
+        <figure class="quote">
+          <blockquote>"The roadmap finally tells the truth. That alone paid for the year."</blockquote>
+          <figcaption><span class="ava ava--3">K</span>Kai Mendez · CTO, Orbital</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <section class="pricing" id="pricing">
+      <header class="section-head">
+        <span class="eyebrow">Pricing</span>
+        <h2 class="section-title">Simple. Honest. Cancel any time.</h2>
+      </header>
+      <div class="price-grid">
+        <article class="price">
+          <h3>Starter</h3>
+          <div class="price__num">$0<span>/mo</span></div>
+          <p class="price__sub">For founders &amp; weekend builders.</p>
+          <ul class="check-list">
+            <li>Up to 5 seats</li>
+            <li>3 active workspaces</li>
+            <li>1,000 agent runs / mo</li>
+            <li>Community support</li>
+          </ul>
+          <a class="btn btn--ghost btn--block" href="#start">Get started</a>
+        </article>
+        <article class="price price--featured">
+          <span class="price__badge">Most popular</span>
+          <h3>Team</h3>
+          <div class="price__num">$24<span>/seat/mo</span></div>
+          <p class="price__sub">For teams shipping every week.</p>
+          <ul class="check-list">
+            <li>Unlimited workspaces</li>
+            <li>50,000 agent runs / mo</li>
+            <li>SOC 2 + SSO + audit logs</li>
+            <li>Priority support</li>
+          </ul>
+          <a class="btn btn--primary btn--block" href="#start">Start free trial</a>
+        </article>
+        <article class="price">
+          <h3>Enterprise</h3>
+          <div class="price__num">Custom</div>
+          <p class="price__sub">Custom training, on-prem, BYO model.</p>
+          <ul class="check-list">
+            <li>Dedicated infra</li>
+            <li>Self-hosted option</li>
+            <li>HIPAA &amp; FedRAMP</li>
+            <li>Named CSM</li>
+          </ul>
+          <a class="btn btn--ghost btn--block" href="#contact">Talk to sales</a>
+        </article>
+      </div>
+    </section>
+
+    <section class="cta">
+      <div class="cta__inner">
+        <h2>Stop managing work. Start shipping it.</h2>
+        <p>Join 4,000+ teams shipping faster with Lumen. Free for 5 seats, forever.</p>
+        <form class="cta__form" onsubmit="event.preventDefault(); this.querySelector('button').textContent='Check your inbox ✓'; this.querySelector('button').disabled=true;">
+          <input type="email" required placeholder="you@yourcompany.com" aria-label="Work email" />
+          <button class="btn btn--primary" type="submit">Get my workspace</button>
+        </form>
+        <p class="cta__fine">No credit card. SOC 2 Type II. GDPR-ready.</p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="footer__top">
+      <div class="footer__brand">
+        <a class="nav__brand" href="#top">
+          <span class="brand-mark">
+            <svg viewBox="0 0 32 32" width="22" height="22"><circle cx="16" cy="16" r="14" fill="#3B82F6"/><circle cx="16" cy="16" r="6" fill="#F8FAFC"/></svg>
+          </span>
+          <span class="brand-name">Lumen</span>
+        </a>
+        <p>The AI-native workspace for teams who ship.</p>
+      </div>
+      <div class="footer__cols">
+        <div>
+          <h4>Product</h4>
+          <a href="#features">Features</a>
+          <a href="#pricing">Pricing</a>
+          <a href="#changelog">Changelog</a>
+          <a href="#roadmap">Roadmap</a>
+        </div>
+        <div>
+          <h4>Company</h4>
+          <a href="#about">About</a>
+          <a href="#careers">Careers</a>
+          <a href="#contact">Contact</a>
+          <a href="#press">Press</a>
+        </div>
+        <div>
+          <h4>Resources</h4>
+          <a href="#docs">Docs</a>
+          <a href="#guides">Guides</a>
+          <a href="#api">API</a>
+          <a href="#status">Status</a>
+        </div>
+        <div>
+          <h4>Legal</h4>
+          <a href="#privacy">Privacy</a>
+          <a href="#terms">Terms</a>
+          <a href="#security">Security</a>
+          <a href="#dpa">DPA</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer__bot">
+      <span>© 2026 Lumen Labs, Inc.</span>
+      <span>Crafted in San Francisco · Berlin · Tokyo</span>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
