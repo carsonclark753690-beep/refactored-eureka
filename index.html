@@ -1,0 +1,571 @@
+<!doctype html>
+<html lang="en" class="scroll-smooth">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Lumen — AI for creative teams</title>
+<meta name="description" content="Lumen is an AI co-pilot that helps creative teams move from idea to delivery faster, with premium taste built in." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500;9..144,600&display=swap" rel="stylesheet" />
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        fontFamily: {
+          sans: ['"DM Sans"', 'system-ui', 'sans-serif'],
+          display: ['Fraunces', 'serif'],
+        },
+        colors: {
+          ink:        '#0C0A09',
+          paper:      '#FAFAF9',
+          stone:      { 50: '#F5F5F4', 100: '#E7E5E4', 200: '#D6D3D1', 400: '#A8A29E', 500: '#78716C', 700: '#44403C', 900: '#1C1917' },
+          gold:       { 400: '#D4A047', 500: '#B8862E', 600: '#A16207', 700: '#854D0E' },
+        },
+        boxShadow: {
+          'glass': '0 1px 0 0 rgba(255,255,255,0.06) inset, 0 0 0 1px rgba(255,255,255,0.08), 0 30px 60px -20px rgba(0,0,0,0.5)',
+          'soft':  '0 1px 0 0 rgba(255,255,255,0.6) inset, 0 1px 2px rgba(12,10,9,0.06), 0 12px 32px -12px rgba(12,10,9,0.18)',
+        },
+      },
+    },
+  };
+</script>
+<style>
+  :root {
+    --color-primary: #1C1917;
+    --color-on-primary: #FFFFFF;
+    --color-accent: #A16207;
+    --color-bg: #FAFAF9;
+    --color-fg: #0C0A09;
+  }
+  html, body { background: var(--color-bg); color: var(--color-fg); }
+  body { font-feature-settings: "ss01","ss02","cv11"; -webkit-font-smoothing: antialiased; }
+
+  .font-display { font-family: 'Fraunces', serif; font-optical-sizing: auto; font-variation-settings: "opsz" 96, "SOFT" 50; letter-spacing: -0.02em; }
+  .text-balance { text-wrap: balance; }
+
+  /* Animated aurora mesh */
+  .aurora { position: absolute; inset: -20%; filter: blur(80px); opacity: 0.55; pointer-events: none; }
+  .aurora .blob { position: absolute; border-radius: 9999px; mix-blend-mode: screen; will-change: transform; }
+  .blob.b1 { width: 60vmax; height: 60vmax; left: -10%; top: -20%; background: radial-gradient(closest-side, #B8862E, transparent 70%); animation: drift1 22s ease-in-out infinite alternate; }
+  .blob.b2 { width: 55vmax; height: 55vmax; right: -15%; top: -10%; background: radial-gradient(closest-side, #7C2D12, transparent 70%); animation: drift2 26s ease-in-out infinite alternate; }
+  .blob.b3 { width: 50vmax; height: 50vmax; left: 20%; bottom: -30%; background: radial-gradient(closest-side, #1E1B4B, transparent 70%); animation: drift3 30s ease-in-out infinite alternate; }
+  @keyframes drift1 { from { transform: translate(0,0) scale(1); } to { transform: translate(8%, 6%) scale(1.1); } }
+  @keyframes drift2 { from { transform: translate(0,0) scale(1.05); } to { transform: translate(-6%, 4%) scale(0.95); } }
+  @keyframes drift3 { from { transform: translate(0,0) scale(0.95); } to { transform: translate(4%, -6%) scale(1.1); } }
+
+  /* Liquid glass card */
+  .glass {
+    background: linear-gradient(135deg, rgba(255,255,255,0.06), rgba(255,255,255,0.02));
+    backdrop-filter: blur(18px) saturate(140%);
+    -webkit-backdrop-filter: blur(18px) saturate(140%);
+    border: 1px solid rgba(255,255,255,0.10);
+    box-shadow: 0 1px 0 0 rgba(255,255,255,0.08) inset, 0 30px 60px -30px rgba(0,0,0,0.6);
+  }
+  .glass-light {
+    background: linear-gradient(135deg, rgba(255,255,255,0.7), rgba(255,255,255,0.4));
+    backdrop-filter: blur(14px) saturate(140%);
+    -webkit-backdrop-filter: blur(14px) saturate(140%);
+    border: 1px solid rgba(12,10,9,0.06);
+  }
+
+  /* Gradient text */
+  .grad-text {
+    background: linear-gradient(180deg, #FAFAF9 0%, #D6D3D1 60%, #A16207 100%);
+    -webkit-background-clip: text; background-clip: text; color: transparent;
+  }
+  .grad-text-dark {
+    background: linear-gradient(180deg, #0C0A09 0%, #44403C 60%, #A16207 100%);
+    -webkit-background-clip: text; background-clip: text; color: transparent;
+  }
+
+  /* Ticker */
+  .ticker { display: flex; gap: 4rem; animation: ticker 40s linear infinite; width: max-content; }
+  @keyframes ticker { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+
+  /* Reveal on scroll */
+  .reveal { opacity: 0; transform: translateY(24px); transition: opacity .9s cubic-bezier(.2,.7,.2,1), transform .9s cubic-bezier(.2,.7,.2,1); }
+  .reveal.in { opacity: 1; transform: translateY(0); }
+
+  /* Subtle grid */
+  .bg-grid {
+    background-image:
+      linear-gradient(rgba(255,255,255,.04) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,.04) 1px, transparent 1px);
+    background-size: 56px 56px;
+    mask-image: radial-gradient(ellipse at center, #000 40%, transparent 75%);
+  }
+  .bg-grid-light {
+    background-image:
+      linear-gradient(rgba(12,10,9,.05) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(12,10,9,.05) 1px, transparent 1px);
+    background-size: 56px 56px;
+    mask-image: radial-gradient(ellipse at center, #000 40%, transparent 75%);
+  }
+
+  /* Glow ring on focus */
+  :focus-visible { outline: 2px solid #D4A047; outline-offset: 3px; border-radius: 6px; }
+
+  /* Buttons */
+  .btn-gold {
+    background: linear-gradient(180deg, #D4A047, #A16207 60%, #854D0E);
+    color: #FAFAF9;
+    box-shadow: 0 1px 0 0 rgba(255,255,255,0.25) inset, 0 10px 24px -10px rgba(161,98,7,0.7);
+    transition: transform .25s ease, box-shadow .25s ease, filter .25s ease;
+  }
+  .btn-gold:hover { transform: translateY(-1px); filter: brightness(1.05); box-shadow: 0 1px 0 0 rgba(255,255,255,0.3) inset, 0 16px 32px -10px rgba(161,98,7,0.7); }
+
+  .btn-ghost {
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.12);
+    color: #FAFAF9;
+    transition: background .25s ease, border-color .25s ease, transform .25s ease;
+  }
+  .btn-ghost:hover { background: rgba(255,255,255,0.08); border-color: rgba(255,255,255,0.2); transform: translateY(-1px); }
+
+  /* Marquee mask */
+  .mask-x { mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent); }
+
+  /* Reduce motion */
+  @media (prefers-reduced-motion: reduce) {
+    .blob { animation: none !important; }
+    .ticker { animation: none !important; }
+    .reveal { opacity: 1 !important; transform: none !important; transition: none !important; }
+  }
+</style>
+</head>
+<body class="font-sans antialiased">
+
+<!-- ============ DARK HERO ============ -->
+<section class="relative overflow-hidden bg-stone-900 text-paper">
+  <div class="absolute inset-0 bg-grid"></div>
+  <div class="aurora">
+    <div class="blob b1"></div>
+    <div class="blob b2"></div>
+    <div class="blob b3"></div>
+  </div>
+  <div class="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-stone-900"></div>
+
+  <!-- Nav -->
+  <header class="relative z-20">
+    <nav class="mx-auto max-w-7xl px-6 lg:px-10 flex items-center justify-between py-5">
+      <a href="#" class="flex items-center gap-2 text-paper">
+        <span class="inline-flex h-8 w-8 items-center justify-center rounded-lg glass">
+          <svg viewBox="0 0 24 24" class="h-4 w-4 text-gold-400" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M12 3v2M12 19v2M5 12H3M21 12h-2M6.3 6.3 4.9 4.9M19.1 19.1l-1.4-1.4M6.3 17.7l-1.4 1.4M19.1 4.9l-1.4 1.4"/>
+            <circle cx="12" cy="12" r="4"/>
+          </svg>
+        </span>
+        <span class="font-display text-xl tracking-tight">Lumen</span>
+      </a>
+      <ul class="hidden md:flex items-center gap-8 text-sm text-stone-200/80">
+        <li><a class="hover:text-paper transition" href="#features">Features</a></li>
+        <li><a class="hover:text-paper transition" href="#workflow">Workflow</a></li>
+        <li><a class="hover:text-paper transition" href="#pricing">Pricing</a></li>
+        <li><a class="hover:text-paper transition" href="#faq">FAQ</a></li>
+      </ul>
+      <div class="flex items-center gap-3">
+        <a href="#" class="hidden sm:inline-flex text-sm text-stone-200/80 hover:text-paper transition cursor-pointer">Sign in</a>
+        <a href="#cta" class="btn-gold inline-flex items-center gap-2 rounded-full px-4 py-2 text-sm font-medium cursor-pointer">
+          Get Lumen
+          <svg viewBox="0 0 24 24" class="h-4 w-4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+        </a>
+      </div>
+    </nav>
+  </header>
+
+  <!-- Hero copy -->
+  <div class="relative z-10 mx-auto max-w-7xl px-6 lg:px-10 pt-16 lg:pt-28 pb-32 lg:pb-44">
+    <div class="reveal max-w-3xl">
+      <span class="inline-flex items-center gap-2 rounded-full glass px-3 py-1 text-xs text-stone-100/80">
+        <span class="h-1.5 w-1.5 rounded-full bg-gold-400 animate-pulse"></span>
+        New — Lumen 2.0 with creative agents
+      </span>
+      <h1 class="font-display mt-6 text-5xl md:text-7xl lg:text-[88px] leading-[0.95] grad-text text-balance">
+        Taste, at the speed of thought.
+      </h1>
+      <p class="mt-6 text-lg md:text-xl text-stone-200/80 max-w-2xl text-balance">
+        Lumen is an AI co-pilot for creative teams. From first sketch to final asset — keep the soul of the work, lose the busywork.
+      </p>
+      <div class="mt-9 flex flex-wrap items-center gap-3">
+        <a href="#cta" class="btn-gold inline-flex items-center gap-2 rounded-full px-6 py-3 text-sm font-medium cursor-pointer">
+          Start free
+          <svg viewBox="0 0 24 24" class="h-4 w-4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+        </a>
+        <a href="#workflow" class="btn-ghost inline-flex items-center gap-2 rounded-full px-6 py-3 text-sm font-medium cursor-pointer">
+          <svg viewBox="0 0 24 24" class="h-4 w-4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+          Watch the film
+        </a>
+      </div>
+      <div class="mt-10 flex items-center gap-6 text-xs text-stone-300/70">
+        <div class="flex -space-x-2">
+          <span class="h-7 w-7 rounded-full ring-2 ring-stone-900 bg-gradient-to-br from-amber-300 to-rose-400"></span>
+          <span class="h-7 w-7 rounded-full ring-2 ring-stone-900 bg-gradient-to-br from-emerald-300 to-cyan-500"></span>
+          <span class="h-7 w-7 rounded-full ring-2 ring-stone-900 bg-gradient-to-br from-fuchsia-400 to-indigo-600"></span>
+          <span class="h-7 w-7 rounded-full ring-2 ring-stone-900 bg-gradient-to-br from-stone-200 to-stone-500"></span>
+        </div>
+        <span>Loved by 12,400+ designers, writers, and directors</span>
+      </div>
+    </div>
+
+    <!-- Floating glass preview -->
+    <div class="reveal relative mt-20 lg:mt-28">
+      <div class="glass mx-auto max-w-5xl rounded-3xl p-3">
+        <div class="rounded-2xl bg-stone-900/80 ring-1 ring-white/5 overflow-hidden">
+          <div class="flex items-center gap-2 px-4 py-3 border-b border-white/5">
+            <span class="h-2.5 w-2.5 rounded-full bg-stone-700"></span>
+            <span class="h-2.5 w-2.5 rounded-full bg-stone-700"></span>
+            <span class="h-2.5 w-2.5 rounded-full bg-stone-700"></span>
+            <span class="ml-3 text-[11px] text-stone-400">lumen.app — Studio</span>
+            <span class="ml-auto text-[11px] text-stone-400">⌘K</span>
+          </div>
+          <div class="grid grid-cols-12 gap-0">
+            <aside class="col-span-3 hidden md:block border-r border-white/5 p-4 text-xs text-stone-400 space-y-3">
+              <p class="text-stone-500 uppercase tracking-wider text-[10px]">Project</p>
+              <div class="rounded-md bg-white/5 px-3 py-2 text-stone-100">Aurora — Brand book</div>
+              <div class="px-3 py-2">Press kit</div>
+              <div class="px-3 py-2">Launch site</div>
+              <div class="px-3 py-2">Spring campaign</div>
+              <p class="pt-4 text-stone-500 uppercase tracking-wider text-[10px]">Agents</p>
+              <div class="px-3 py-2 flex items-center gap-2"><span class="h-1.5 w-1.5 rounded-full bg-emerald-400"></span> Director</div>
+              <div class="px-3 py-2 flex items-center gap-2"><span class="h-1.5 w-1.5 rounded-full bg-gold-400"></span> Art lead</div>
+              <div class="px-3 py-2 flex items-center gap-2"><span class="h-1.5 w-1.5 rounded-full bg-sky-400"></span> Copy</div>
+            </aside>
+            <main class="col-span-12 md:col-span-9 p-6 space-y-5">
+              <div class="flex items-center justify-between">
+                <h3 class="font-display text-2xl text-paper">Aurora — Brand book</h3>
+                <div class="flex items-center gap-2">
+                  <span class="text-[11px] rounded-full glass px-2.5 py-1 text-stone-200">v 0.4</span>
+                  <span class="text-[11px] rounded-full bg-gold-600/20 ring-1 ring-gold-500/30 text-gold-400 px-2.5 py-1">Reviewing</span>
+                </div>
+              </div>
+              <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                <div class="rounded-xl glass p-4">
+                  <p class="text-[10px] uppercase tracking-wider text-stone-400">Palette</p>
+                  <div class="mt-3 flex gap-2">
+                    <span class="h-8 w-8 rounded-lg bg-stone-900 ring-1 ring-white/10"></span>
+                    <span class="h-8 w-8 rounded-lg bg-gold-600 ring-1 ring-white/10"></span>
+                    <span class="h-8 w-8 rounded-lg bg-stone-100 ring-1 ring-white/10"></span>
+                    <span class="h-8 w-8 rounded-lg bg-stone-400 ring-1 ring-white/10"></span>
+                  </div>
+                </div>
+                <div class="rounded-xl glass p-4">
+                  <p class="text-[10px] uppercase tracking-wider text-stone-400">Type</p>
+                  <p class="mt-2 font-display text-paper text-2xl leading-none">Fraunces</p>
+                  <p class="text-stone-300 text-sm">DM Sans · 16/24</p>
+                </div>
+                <div class="rounded-xl glass p-4">
+                  <p class="text-[10px] uppercase tracking-wider text-stone-400">Voice</p>
+                  <p class="mt-2 text-stone-100 text-sm leading-snug">Confident, warm, never loud. Plain words, considered detail.</p>
+                </div>
+              </div>
+              <div class="rounded-xl glass p-4 flex items-start gap-3">
+                <span class="mt-1 inline-flex h-6 w-6 items-center justify-center rounded-full bg-gold-600/20 ring-1 ring-gold-500/40">
+                  <svg viewBox="0 0 24 24" class="h-3.5 w-3.5 text-gold-400" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v2M12 19v2M5 12H3M21 12h-2"/><circle cx="12" cy="12" r="4"/></svg>
+                </span>
+                <div>
+                  <p class="text-stone-100 text-sm"><span class="text-gold-400 font-medium">Art lead</span> drafted three hero compositions matching the new voice. Want me to push the warmer one to the launch site?</p>
+                  <div class="mt-3 flex gap-2">
+                    <button class="btn-gold rounded-full px-3 py-1.5 text-xs cursor-pointer">Apply</button>
+                    <button class="btn-ghost rounded-full px-3 py-1.5 text-xs cursor-pointer">Compare</button>
+                  </div>
+                </div>
+              </div>
+            </main>
+          </div>
+        </div>
+      </div>
+      <!-- glow under -->
+      <div class="absolute -z-10 inset-x-10 -bottom-10 h-40 bg-gold-600/30 blur-3xl rounded-full"></div>
+    </div>
+  </div>
+
+  <!-- Logo ticker -->
+  <div class="relative z-10 border-t border-white/5 py-8 mask-x">
+    <div class="ticker">
+      <div class="flex items-center gap-16 text-stone-300/60 font-display text-xl tracking-tight">
+        <span>Studio Aoki</span><span>Northwind</span><span>Verre</span><span>Maison Lyra</span><span>Atelier 9</span><span>Foglia</span><span>Helix Type</span><span>Côte&nbsp;Noire</span>
+      </div>
+      <div class="flex items-center gap-16 text-stone-300/60 font-display text-xl tracking-tight" aria-hidden="true">
+        <span>Studio Aoki</span><span>Northwind</span><span>Verre</span><span>Maison Lyra</span><span>Atelier 9</span><span>Foglia</span><span>Helix Type</span><span>Côte&nbsp;Noire</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FEATURES (LIGHT) ============ -->
+<section id="features" class="relative bg-paper text-ink py-28 lg:py-36">
+  <div class="absolute inset-0 bg-grid-light pointer-events-none"></div>
+  <div class="relative mx-auto max-w-7xl px-6 lg:px-10">
+    <div class="reveal max-w-2xl">
+      <p class="text-xs uppercase tracking-[0.2em] text-stone-500">What's inside</p>
+      <h2 class="font-display mt-3 text-4xl md:text-6xl leading-[1] grad-text-dark text-balance">A studio in your sidebar.</h2>
+      <p class="mt-5 text-stone-700 text-lg max-w-xl">Six tools that feel like one. Each one trained on great work, tuned to your team's voice, and quiet when you're in the zone.</p>
+    </div>
+
+    <!-- Bento grid -->
+    <div class="reveal mt-14 grid grid-cols-1 md:grid-cols-6 gap-5">
+      <!-- big -->
+      <article class="md:col-span-4 md:row-span-2 group relative overflow-hidden rounded-3xl bg-stone-900 text-paper p-8 lg:p-10 min-h-[420px]">
+        <div class="aurora opacity-60"><div class="blob b1"></div><div class="blob b3"></div></div>
+        <div class="relative">
+          <span class="inline-flex items-center gap-2 rounded-full glass px-3 py-1 text-xs">
+            <svg viewBox="0 0 24 24" class="h-3.5 w-3.5 text-gold-400" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 12h18M3 6h18M3 18h12"/></svg>
+            Director
+          </span>
+          <h3 class="font-display mt-5 text-3xl md:text-5xl leading-tight text-balance">An agent that knows your brief — and your gut.</h3>
+          <p class="mt-4 text-stone-200/80 max-w-lg">Brief once. Lumen drafts directions, mood boards, and shot lists that match your taste, not the average of the internet.</p>
+          <div class="mt-8 grid grid-cols-3 gap-3 max-w-md">
+            <div class="rounded-xl glass aspect-square p-3 text-[10px] text-stone-300">Mood A<br/><span class="text-gold-400">warm · slow</span></div>
+            <div class="rounded-xl glass aspect-square p-3 text-[10px] text-stone-300">Mood B<br/><span class="text-gold-400">cold · loud</span></div>
+            <div class="rounded-xl glass aspect-square p-3 text-[10px] text-stone-300">Mood C<br/><span class="text-gold-400">soft · still</span></div>
+          </div>
+        </div>
+      </article>
+
+      <article class="md:col-span-2 group rounded-3xl bg-stone-100 p-7 ring-1 ring-stone-200/80 min-h-[200px]">
+        <div class="flex items-center gap-2 text-stone-700">
+          <span class="inline-flex h-8 w-8 items-center justify-center rounded-lg bg-gold-600/10 ring-1 ring-gold-600/20 text-gold-700">
+            <svg viewBox="0 0 24 24" class="h-4 w-4" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 7V4h16v3M9 20h6M12 4v16"/></svg>
+          </span>
+          <span class="text-xs uppercase tracking-[0.2em] text-stone-500">Type</span>
+        </div>
+        <h3 class="font-display mt-4 text-2xl text-balance">Pair fonts with a glance.</h3>
+        <p class="mt-2 text-stone-600 text-sm">57 hand-picked combinations, ranked for your brand mood. One click to adopt.</p>
+      </article>
+
+      <article class="md:col-span-2 rounded-3xl bg-stone-100 p-7 ring-1 ring-stone-200/80 min-h-[200px]">
+        <div class="flex items-center gap-2 text-stone-700">
+          <span class="inline-flex h-8 w-8 items-center justify-center rounded-lg bg-gold-600/10 ring-1 ring-gold-600/20 text-gold-700">
+            <svg viewBox="0 0 24 24" class="h-4 w-4" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="13.5" cy="6.5" r="2.5"/><circle cx="17.5" cy="10.5" r="2.5"/><circle cx="8.5" cy="7.5" r="2.5"/><circle cx="6.5" cy="12.5" r="2.5"/><path d="M12 22a10 10 0 1 1 10-10c0 2-2 3-4 3h-2a2 2 0 0 0-2 2v2c0 1.5-.5 3-2 3z"/></svg>
+          </span>
+          <span class="text-xs uppercase tracking-[0.2em] text-stone-500">Palette</span>
+        </div>
+        <h3 class="font-display mt-4 text-2xl text-balance">Industry-aware color.</h3>
+        <p class="mt-2 text-stone-600 text-sm">161 palettes mapped to verticals, with WCAG AA lock-in by default.</p>
+      </article>
+
+      <article class="md:col-span-3 rounded-3xl bg-paper ring-1 ring-stone-200 p-7 relative overflow-hidden min-h-[220px]">
+        <div class="absolute -right-10 -top-10 h-40 w-40 rounded-full bg-gold-400/30 blur-3xl"></div>
+        <div class="flex items-center gap-2 text-stone-700">
+          <span class="inline-flex h-8 w-8 items-center justify-center rounded-lg bg-gold-600/10 ring-1 ring-gold-600/20 text-gold-700">
+            <svg viewBox="0 0 24 24" class="h-4 w-4" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15a4 4 0 0 1-4 4H7l-4 4V7a4 4 0 0 1 4-4h10a4 4 0 0 1 4 4z"/></svg>
+          </span>
+          <span class="text-xs uppercase tracking-[0.2em] text-stone-500">Voice</span>
+        </div>
+        <h3 class="font-display mt-4 text-2xl md:text-3xl text-balance">Copy that sounds like you, not "AI."</h3>
+        <p class="mt-2 text-stone-600">Train Lumen on your past work. It writes drafts in your cadence — em-dashes, opinions and all.</p>
+      </article>
+
+      <article class="md:col-span-3 rounded-3xl bg-paper ring-1 ring-stone-200 p-7 min-h-[220px]">
+        <div class="flex items-center gap-2 text-stone-700">
+          <span class="inline-flex h-8 w-8 items-center justify-center rounded-lg bg-gold-600/10 ring-1 ring-gold-600/20 text-gold-700">
+            <svg viewBox="0 0 24 24" class="h-4 w-4" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/></svg>
+          </span>
+          <span class="text-xs uppercase tracking-[0.2em] text-stone-500">Layout</span>
+        </div>
+        <h3 class="font-display mt-4 text-2xl md:text-3xl text-balance">Composition with taste.</h3>
+        <p class="mt-2 text-stone-600">Bento, editorial, hero-centric — Lumen suggests the right structure for the message.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ============ WORKFLOW (DARK) ============ -->
+<section id="workflow" class="relative overflow-hidden bg-stone-900 text-paper py-28 lg:py-36">
+  <div class="aurora opacity-40"><div class="blob b2"></div><div class="blob b3"></div></div>
+  <div class="relative mx-auto max-w-7xl px-6 lg:px-10">
+    <div class="reveal max-w-2xl">
+      <p class="text-xs uppercase tracking-[0.2em] text-stone-400">How it flows</p>
+      <h2 class="font-display mt-3 text-4xl md:text-6xl leading-[1] grad-text text-balance">From sketch to ship in one quiet thread.</h2>
+    </div>
+    <ol class="reveal mt-14 grid grid-cols-1 md:grid-cols-3 gap-6">
+      <li class="glass rounded-3xl p-7">
+        <div class="flex items-baseline justify-between">
+          <span class="font-display text-5xl text-gold-400/80">01</span>
+          <span class="text-xs text-stone-300/70">Brief</span>
+        </div>
+        <h3 class="font-display mt-6 text-2xl">Tell it the truth.</h3>
+        <p class="mt-2 text-stone-200/80 text-sm">Drop in references, transcripts, even a half-finished doc. Lumen reads context, not just keywords.</p>
+      </li>
+      <li class="glass rounded-3xl p-7">
+        <div class="flex items-baseline justify-between">
+          <span class="font-display text-5xl text-gold-400/80">02</span>
+          <span class="text-xs text-stone-300/70">Make</span>
+        </div>
+        <h3 class="font-display mt-6 text-2xl">Iterate at the speed of taste.</h3>
+        <p class="mt-2 text-stone-200/80 text-sm">Side-by-side variants, live edits, reversible everything. Your hand stays on the wheel.</p>
+      </li>
+      <li class="glass rounded-3xl p-7">
+        <div class="flex items-baseline justify-between">
+          <span class="font-display text-5xl text-gold-400/80">03</span>
+          <span class="text-xs text-stone-300/70">Ship</span>
+        </div>
+        <h3 class="font-display mt-6 text-2xl">Hand-off, automated.</h3>
+        <p class="mt-2 text-stone-200/80 text-sm">Export to Figma, Webflow, Notion, or a tidy zip. Versioned, attributed, ready for review.</p>
+      </li>
+    </ol>
+  </div>
+</section>
+
+<!-- ============ TESTIMONIAL ============ -->
+<section class="relative bg-paper text-ink py-28 lg:py-36">
+  <div class="mx-auto max-w-5xl px-6 lg:px-10 reveal">
+    <figure class="text-center">
+      <svg viewBox="0 0 24 24" class="mx-auto h-8 w-8 text-gold-600" fill="currentColor" aria-hidden="true"><path d="M7 7h4v4H8c0 2 1 3 3 3v3c-4 0-6-2-6-6V7zm9 0h4v4h-3c0 2 1 3 3 3v3c-4 0-6-2-6-6V7z"/></svg>
+      <blockquote class="font-display mt-6 text-3xl md:text-5xl leading-[1.05] text-balance">
+        "It's the first AI that <span class="grad-text-dark">disappears into the work</span>. We made our best campaign in years — and stopped pulling all-nighters to do it."
+      </blockquote>
+      <figcaption class="mt-8 text-sm text-stone-600">
+        <span class="text-stone-900 font-medium">Naomi Sato</span> · ECD, Studio Aoki
+      </figcaption>
+    </figure>
+  </div>
+</section>
+
+<!-- ============ PRICING ============ -->
+<section id="pricing" class="relative bg-stone-50 text-ink py-28 lg:py-36">
+  <div class="mx-auto max-w-7xl px-6 lg:px-10">
+    <div class="reveal text-center max-w-2xl mx-auto">
+      <p class="text-xs uppercase tracking-[0.2em] text-stone-500">Pricing</p>
+      <h2 class="font-display mt-3 text-4xl md:text-6xl grad-text-dark text-balance">Pay for taste, not tokens.</h2>
+      <p class="mt-4 text-stone-600">Flat plans. No usage anxiety. Cancel anytime.</p>
+    </div>
+
+    <div class="reveal mt-14 grid grid-cols-1 md:grid-cols-3 gap-5">
+      <article class="rounded-3xl bg-paper ring-1 ring-stone-200 p-8">
+        <p class="text-xs uppercase tracking-[0.2em] text-stone-500">Solo</p>
+        <p class="mt-4 font-display text-5xl">$18<span class="text-base text-stone-500 font-sans">/mo</span></p>
+        <p class="mt-2 text-stone-600 text-sm">For one creative working on serious things.</p>
+        <ul class="mt-6 space-y-3 text-sm text-stone-700">
+          <li class="flex gap-2"><span class="text-gold-700">●</span> Unlimited projects</li>
+          <li class="flex gap-2"><span class="text-gold-700">●</span> Director + Art lead agents</li>
+          <li class="flex gap-2"><span class="text-gold-700">●</span> Figma + Webflow export</li>
+        </ul>
+        <a href="#cta" class="mt-8 inline-flex w-full items-center justify-center rounded-full ring-1 ring-stone-300 bg-paper px-5 py-3 text-sm font-medium hover:bg-stone-100 transition cursor-pointer">Start solo</a>
+      </article>
+
+      <article class="relative rounded-3xl bg-stone-900 text-paper p-8 ring-1 ring-white/10 overflow-hidden">
+        <div class="absolute -right-20 -top-20 h-60 w-60 rounded-full bg-gold-500/30 blur-3xl"></div>
+        <div class="relative">
+          <div class="flex items-center justify-between">
+            <p class="text-xs uppercase tracking-[0.2em] text-gold-400">Studio</p>
+            <span class="text-[10px] rounded-full bg-gold-600/20 ring-1 ring-gold-500/40 text-gold-300 px-2 py-0.5">Most loved</span>
+          </div>
+          <p class="mt-4 font-display text-5xl">$48<span class="text-base text-stone-300 font-sans">/seat/mo</span></p>
+          <p class="mt-2 text-stone-300 text-sm">For teams who care how the work looks <em class="not-italic text-gold-300">and</em> sounds.</p>
+          <ul class="mt-6 space-y-3 text-sm text-stone-200/90">
+            <li class="flex gap-2"><span class="text-gold-400">●</span> All agents incl. Voice + Layout</li>
+            <li class="flex gap-2"><span class="text-gold-400">●</span> Brand training on your work</li>
+            <li class="flex gap-2"><span class="text-gold-400">●</span> Shared libraries & comments</li>
+            <li class="flex gap-2"><span class="text-gold-400">●</span> SSO, audit, role permissions</li>
+          </ul>
+          <a href="#cta" class="btn-gold mt-8 inline-flex w-full items-center justify-center rounded-full px-5 py-3 text-sm font-medium cursor-pointer">Start studio trial</a>
+        </div>
+      </article>
+
+      <article class="rounded-3xl bg-paper ring-1 ring-stone-200 p-8">
+        <p class="text-xs uppercase tracking-[0.2em] text-stone-500">Atelier</p>
+        <p class="mt-4 font-display text-5xl">Custom</p>
+        <p class="mt-2 text-stone-600 text-sm">For agencies and brands with their own house style.</p>
+        <ul class="mt-6 space-y-3 text-sm text-stone-700">
+          <li class="flex gap-2"><span class="text-gold-700">●</span> Custom-trained models</li>
+          <li class="flex gap-2"><span class="text-gold-700">●</span> Dedicated solutions partner</li>
+          <li class="flex gap-2"><span class="text-gold-700">●</span> On-prem & VPC options</li>
+        </ul>
+        <a href="#cta" class="mt-8 inline-flex w-full items-center justify-center rounded-full ring-1 ring-stone-300 bg-paper px-5 py-3 text-sm font-medium hover:bg-stone-100 transition cursor-pointer">Talk to us</a>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FAQ ============ -->
+<section id="faq" class="bg-paper text-ink py-28 lg:py-36">
+  <div class="mx-auto max-w-4xl px-6 lg:px-10">
+    <div class="reveal">
+      <p class="text-xs uppercase tracking-[0.2em] text-stone-500">Questions</p>
+      <h2 class="font-display mt-3 text-4xl md:text-5xl grad-text-dark text-balance">The honest answers.</h2>
+    </div>
+    <div class="reveal mt-10 divide-y divide-stone-200 ring-1 ring-stone-200 rounded-3xl bg-paper">
+      <details class="group p-6">
+        <summary class="flex cursor-pointer items-center justify-between font-display text-xl">Will Lumen replace my designers?<span class="ml-4 text-stone-400 group-open:rotate-45 transition">+</span></summary>
+        <p class="mt-3 text-stone-600">No. Lumen makes the boring 80% disappear so the people you hired can spend their time on the 20% that actually matters.</p>
+      </details>
+      <details class="group p-6">
+        <summary class="flex cursor-pointer items-center justify-between font-display text-xl">How is my work used to train models?<span class="ml-4 text-stone-400 group-open:rotate-45 transition">+</span></summary>
+        <p class="mt-3 text-stone-600">It isn't, unless you opt in. Studio and Atelier plans include private fine-tuning that never leaves your workspace.</p>
+      </details>
+      <details class="group p-6">
+        <summary class="flex cursor-pointer items-center justify-between font-display text-xl">Which tools does it plug into?<span class="ml-4 text-stone-400 group-open:rotate-45 transition">+</span></summary>
+        <p class="mt-3 text-stone-600">Figma, Webflow, Notion, Linear, Slack, and a clean REST API for everything else.</p>
+      </details>
+      <details class="group p-6">
+        <summary class="flex cursor-pointer items-center justify-between font-display text-xl">Is there a free trial?<span class="ml-4 text-stone-400 group-open:rotate-45 transition">+</span></summary>
+        <p class="mt-3 text-stone-600">Yes — 14 days, no card, every feature on. Bring a real project.</p>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CTA ============ -->
+<section id="cta" class="relative bg-stone-900 text-paper overflow-hidden">
+  <div class="aurora"><div class="blob b1"></div><div class="blob b2"></div><div class="blob b3"></div></div>
+  <div class="relative mx-auto max-w-5xl px-6 lg:px-10 py-28 lg:py-36 text-center">
+    <h2 class="reveal font-display text-5xl md:text-7xl leading-[0.95] grad-text text-balance">
+      Make better work, sooner.
+    </h2>
+    <p class="reveal mt-5 text-stone-200/80 max-w-xl mx-auto">Two weeks free. No credit card. Just your next great project.</p>
+    <div class="reveal mt-10 flex flex-wrap justify-center gap-3">
+      <a href="#" class="btn-gold inline-flex items-center gap-2 rounded-full px-7 py-3.5 text-sm font-medium cursor-pointer">
+        Start free
+        <svg viewBox="0 0 24 24" class="h-4 w-4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+      </a>
+      <a href="#" class="btn-ghost inline-flex items-center gap-2 rounded-full px-7 py-3.5 text-sm font-medium cursor-pointer">
+        Book a walkthrough
+      </a>
+    </div>
+  </div>
+
+  <footer class="relative border-t border-white/5">
+    <div class="mx-auto max-w-7xl px-6 lg:px-10 py-12 grid grid-cols-2 md:grid-cols-5 gap-8 text-sm text-stone-300/80">
+      <div class="col-span-2">
+        <div class="flex items-center gap-2">
+          <span class="inline-flex h-8 w-8 items-center justify-center rounded-lg glass">
+            <svg viewBox="0 0 24 24" class="h-4 w-4 text-gold-400" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v2M12 19v2M5 12H3M21 12h-2"/><circle cx="12" cy="12" r="4"/></svg>
+          </span>
+          <span class="font-display text-xl text-paper">Lumen</span>
+        </div>
+        <p class="mt-4 max-w-xs">Quietly opinionated AI for people who care about the craft.</p>
+      </div>
+      <div>
+        <p class="text-paper font-medium">Product</p>
+        <ul class="mt-3 space-y-2"><li><a href="#" class="hover:text-paper">Features</a></li><li><a href="#" class="hover:text-paper">Workflow</a></li><li><a href="#" class="hover:text-paper">Pricing</a></li><li><a href="#" class="hover:text-paper">Changelog</a></li></ul>
+      </div>
+      <div>
+        <p class="text-paper font-medium">Company</p>
+        <ul class="mt-3 space-y-2"><li><a href="#" class="hover:text-paper">About</a></li><li><a href="#" class="hover:text-paper">Manifesto</a></li><li><a href="#" class="hover:text-paper">Careers</a></li><li><a href="#" class="hover:text-paper">Press</a></li></ul>
+      </div>
+      <div>
+        <p class="text-paper font-medium">Resources</p>
+        <ul class="mt-3 space-y-2"><li><a href="#" class="hover:text-paper">Docs</a></li><li><a href="#" class="hover:text-paper">Templates</a></li><li><a href="#" class="hover:text-paper">Community</a></li><li><a href="#" class="hover:text-paper">Support</a></li></ul>
+      </div>
+    </div>
+    <div class="mx-auto max-w-7xl px-6 lg:px-10 py-6 border-t border-white/5 flex flex-wrap items-center justify-between text-xs text-stone-400">
+      <span>© 2026 Lumen Labs. Made with restraint.</span>
+      <div class="flex gap-5"><a href="#" class="hover:text-paper">Privacy</a><a href="#" class="hover:text-paper">Terms</a><a href="#" class="hover:text-paper">Security</a></div>
+    </div>
+  </footer>
+</section>
+
+<script>
+  // Reveal on scroll
+  const io = new IntersectionObserver((entries) => {
+    for (const e of entries) {
+      if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
+    }
+  }, { threshold: 0.12 });
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+</script>
+</body>
+</html>
