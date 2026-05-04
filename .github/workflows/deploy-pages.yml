@@ -2,7 +2,7 @@ name: Deploy to GitHub Pages
 
 on:
   push:
-    branches: [claude/install-ui-ux-skill-KlpzM]
+    branches: [main]
   workflow_dispatch:
 
 permissions:
