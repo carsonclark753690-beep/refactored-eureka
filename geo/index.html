@@ -1,0 +1,650 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="GEO Aviation — Stratospheric flight, AI-routed through the world's jetstreams. Twice as fast. A fraction of the emissions." />
+  <title>GEO Aviation — The sky, redrawn.</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='14' fill='%23000'/%3E%3Cpath d='M6 16h20M16 6v20' stroke='%23fff' stroke-width='1' opacity='.4'/%3E%3Ccircle cx='16' cy='16' r='3' fill='%23fff'/%3E%3C/svg%3E" />
+</head>
+<body>
+  <header class="nav" id="nav">
+    <a class="nav__brand" href="#top" aria-label="GEO Aviation">
+      <svg class="nav__mark" viewBox="0 0 32 32" width="22" height="22" aria-hidden="true">
+        <circle cx="16" cy="16" r="15" fill="none" stroke="currentColor" stroke-width="1"/>
+        <path d="M2 16h28M16 2v28" stroke="currentColor" stroke-width="0.5" opacity="0.4"/>
+        <circle cx="16" cy="16" r="3" fill="currentColor"/>
+        <path d="M16 4 L18 16 L16 28 L14 16 Z" fill="currentColor" opacity="0.7"/>
+      </svg>
+      <span>GEO</span>
+    </a>
+    <nav class="nav__links" aria-label="Primary">
+      <a href="#atlas">Atlas</a>
+      <a href="#technology">Technology</a>
+      <a href="#routes">Routes</a>
+      <a href="#sustainability">Impact</a>
+      <a href="#reserve">Reserve</a>
+    </nav>
+    <div class="nav__cta">
+      <a class="nav__link-sm" href="#account">Sign in</a>
+      <a class="btn btn--ghost-sm" href="#reserve">Reserve a seat</a>
+    </div>
+    <button class="nav__menu" aria-label="Open menu" aria-expanded="false">
+      <span></span><span></span>
+    </button>
+  </header>
+
+  <main id="top">
+    <!-- ============ HERO ============ -->
+    <section class="hero" data-section="hero">
+      <div class="hero__sky" aria-hidden="true">
+        <div class="hero__sun"></div>
+        <div class="hero__horizon"></div>
+        <div class="stars">
+          <span style="--x:12%;--y:18%;--d:2.4s"></span>
+          <span style="--x:28%;--y:8%;--d:1.8s"></span>
+          <span style="--x:44%;--y:22%;--d:3.2s"></span>
+          <span style="--x:62%;--y:12%;--d:2.0s"></span>
+          <span style="--x:78%;--y:24%;--d:2.8s"></span>
+          <span style="--x:88%;--y:6%;--d:3.6s"></span>
+          <span style="--x:7%;--y:32%;--d:2.2s"></span>
+          <span style="--x:35%;--y:30%;--d:2.6s"></span>
+          <span style="--x:55%;--y:34%;--d:3.0s"></span>
+          <span style="--x:72%;--y:38%;--d:2.4s"></span>
+        </div>
+      </div>
+
+      <div class="hero__content">
+        <p class="eyebrow eyebrow--light reveal">Introducing Atlas — The first stratospheric airliner</p>
+        <h1 class="hero__title reveal">
+          <span>The sky,</span>
+          <span class="serif"><em>redrawn.</em></span>
+        </h1>
+        <p class="hero__sub reveal">
+          Sixty-thousand feet above weather, traffic, and turbulence —
+          guided by AI across the world's jetstreams.
+          Twice as fast. A fraction of the emissions.
+        </p>
+        <div class="hero__cta reveal">
+          <a class="btn btn--light" href="#atlas">Discover Atlas
+            <svg viewBox="0 0 16 16" width="13" height="13" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
+          <a class="btn btn--ghost" href="#reserve">Reserve a seat</a>
+        </div>
+      </div>
+
+      <svg class="hero__plane" viewBox="0 0 800 160" aria-hidden="true">
+        <defs>
+          <linearGradient id="planeGrad" x1="0" x2="1" y1="0" y2="1">
+            <stop offset="0%" stop-color="#e2e8f0"/>
+            <stop offset="100%" stop-color="#475569"/>
+          </linearGradient>
+          <linearGradient id="trailGrad" x1="1" x2="0">
+            <stop offset="0%" stop-color="#fff" stop-opacity=".9"/>
+            <stop offset="100%" stop-color="#fff" stop-opacity="0"/>
+          </linearGradient>
+        </defs>
+        <path d="M40 80 Q 200 78 380 80 L 700 80" stroke="url(#trailGrad)" stroke-width="1.2" fill="none" opacity=".7"/>
+        <g transform="translate(680 80)">
+          <path d="M-40 0 L-15 -3 L60 0 L-15 3 Z" fill="url(#planeGrad)"/>
+          <path d="M-10 -2 L-30 -22 L-15 -22 L0 -2 Z" fill="url(#planeGrad)"/>
+          <path d="M-10 2 L-30 22 L-15 22 L0 2 Z" fill="url(#planeGrad)"/>
+          <path d="M40 -1 L30 -10 L34 -10 L48 -1 Z" fill="url(#planeGrad)"/>
+          <path d="M40 1 L30 10 L34 10 L48 1 Z" fill="url(#planeGrad)"/>
+        </g>
+      </svg>
+
+      <div class="hero__scroll" aria-hidden="true">
+        <span>Scroll</span>
+        <div class="hero__scroll-line"><i></i></div>
+      </div>
+    </section>
+
+    <!-- ============ PINNED SCROLL REVEAL ============ -->
+    <section class="reveal-stage" id="atlas">
+      <div class="reveal-stage__sticky">
+        <div class="reveal-stage__bg" aria-hidden="true"></div>
+
+        <div class="reveal-stage__plane" aria-hidden="true">
+          <svg viewBox="0 0 1000 400" preserveAspectRatio="xMidYMid meet">
+            <defs>
+              <linearGradient id="bodyGrad" x1="0" x2="1" y1="0" y2="1">
+                <stop offset="0%" stop-color="#f8fafc"/>
+                <stop offset="50%" stop-color="#cbd5e1"/>
+                <stop offset="100%" stop-color="#1e293b"/>
+              </linearGradient>
+              <linearGradient id="wingGrad" x1="0" x2="0" y1="0" y2="1">
+                <stop offset="0%" stop-color="#e2e8f0"/>
+                <stop offset="100%" stop-color="#475569"/>
+              </linearGradient>
+              <radialGradient id="cockpitGrad" cx="0.3" cy="0.3">
+                <stop offset="0%" stop-color="#60a5fa"/>
+                <stop offset="100%" stop-color="#1e3a8a"/>
+              </radialGradient>
+            </defs>
+            <!-- contrail -->
+            <path class="rs-trail" d="M50 200 Q 250 200 480 200 L 530 200" stroke="rgba(255,255,255,0.5)" stroke-width="2" fill="none" stroke-linecap="round"/>
+            <!-- delta wing body -->
+            <g class="rs-plane">
+              <path d="M530 200 L780 175 L880 195 L880 205 L780 225 L530 200 Z" fill="url(#bodyGrad)"/>
+              <path d="M580 195 L750 130 L820 175 L530 200 Z" fill="url(#wingGrad)" opacity="0.95"/>
+              <path d="M580 205 L750 270 L820 225 L530 200 Z" fill="url(#wingGrad)" opacity="0.85"/>
+              <path d="M820 195 L880 165 L900 195 L880 205 L820 205 Z" fill="url(#wingGrad)" opacity="0.9"/>
+              <path d="M820 205 L880 235 L900 205 L880 195 L820 195 Z" fill="url(#wingGrad)" opacity="0.8"/>
+              <ellipse cx="820" cy="200" rx="22" ry="9" fill="url(#cockpitGrad)"/>
+              <circle cx="833" cy="197" r="2" fill="#fff" opacity=".8"/>
+            </g>
+            <!-- markers/callouts (positions referenced from CSS) -->
+            <g class="rs-markers">
+              <g class="rs-marker" data-marker="1">
+                <circle cx="820" cy="200" r="6" fill="#60a5fa"/>
+                <circle cx="820" cy="200" r="14" fill="none" stroke="#60a5fa" stroke-width="1" opacity=".5"/>
+              </g>
+              <g class="rs-marker" data-marker="2">
+                <circle cx="700" cy="160" r="6" fill="#60a5fa"/>
+                <circle cx="700" cy="160" r="14" fill="none" stroke="#60a5fa" stroke-width="1" opacity=".5"/>
+              </g>
+              <g class="rs-marker" data-marker="3">
+                <circle cx="600" cy="200" r="6" fill="#60a5fa"/>
+                <circle cx="600" cy="200" r="14" fill="none" stroke="#60a5fa" stroke-width="1" opacity=".5"/>
+              </g>
+            </g>
+          </svg>
+        </div>
+
+        <div class="reveal-stage__copy">
+          <div class="rs-step is-active" data-step="0">
+            <p class="eyebrow">Atlas</p>
+            <h2>A new aircraft, built from first principles.</h2>
+            <p>Carbon-composite delta wing. Hybrid-electric propulsion. A cabin that thinks. Atlas is the first commercial aircraft engineered for the stratosphere.</p>
+          </div>
+          <div class="rs-step" data-step="1">
+            <p class="eyebrow">AI Pilot</p>
+            <h2>An autopilot that reads the planet.</h2>
+            <p>Atlas's flight intelligence ingests live atmospheric data — pressure, wind, ozone — and chooses the most efficient path through the world's jetstreams, in real time.</p>
+          </div>
+          <div class="rs-step" data-step="2">
+            <p class="eyebrow">Aerodynamics</p>
+            <h2>Designed for thinner air.</h2>
+            <p>At 60,000 feet, drag drops by 80%. We rebuilt every surface to take advantage — the wing alone gives Atlas 3.4× the glide ratio of a conventional jet.</p>
+          </div>
+          <div class="rs-step" data-step="3">
+            <p class="eyebrow">Propulsion</p>
+            <h2>Hybrid, by the numbers.</h2>
+            <p>Sustainable aviation fuel for cruise. Battery-electric for taxi, takeoff, and descent. The result: an 82% reduction in CO₂ per passenger-mile.</p>
+          </div>
+        </div>
+
+        <div class="rs-progress" aria-hidden="true">
+          <span class="is-active"></span><span></span><span></span><span></span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ BIG STAT MOMENT ============ -->
+    <section class="moment moment--altitude">
+      <div class="moment__bg" aria-hidden="true">
+        <div class="moment__layer moment__layer--space"></div>
+        <div class="moment__layer moment__layer--earth"></div>
+      </div>
+      <div class="moment__content">
+        <p class="eyebrow eyebrow--light reveal">Cruise altitude</p>
+        <div class="moment__num reveal">
+          <span class="counter" data-count="60000">60,000</span>
+          <span class="moment__unit">ft</span>
+        </div>
+        <p class="moment__sub reveal">Above weather. Above traffic. Above the ordinary sky.</p>
+        <div class="moment__compare reveal">
+          <div class="moment__bar">
+            <div class="moment__bar-row">
+              <span>Atlas</span>
+              <div class="moment__bar-track"><i style="--w:100%"></i></div>
+              <span>60,000 ft</span>
+            </div>
+            <div class="moment__bar-row moment__bar-row--muted">
+              <span>Boeing 787</span>
+              <div class="moment__bar-track"><i style="--w:65%"></i></div>
+              <span>39,000 ft</span>
+            </div>
+            <div class="moment__bar-row moment__bar-row--muted">
+              <span>A350</span>
+              <div class="moment__bar-track"><i style="--w:71%"></i></div>
+              <span>43,000 ft</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ TECHNOLOGY: JETSTREAMS ============ -->
+    <section class="tech" id="technology">
+      <header class="section-head">
+        <p class="eyebrow reveal">The technology</p>
+        <h2 class="section-title reveal">We don't fight the wind.<br/><span class="serif"><em>We ride it.</em></span></h2>
+        <p class="section-sub reveal">The polar jetstream moves at up to 250 mph. Atlas's AI-routing constantly adjusts altitude and heading to surf it — adding speed, saving fuel.</p>
+      </header>
+
+      <div class="jet-canvas reveal">
+        <svg viewBox="0 0 1200 500" preserveAspectRatio="xMidYMid meet" aria-hidden="true">
+          <defs>
+            <linearGradient id="jetLine" x1="0" x2="1">
+              <stop offset="0%" stop-color="#3b82f6" stop-opacity="0"/>
+              <stop offset="50%" stop-color="#60a5fa" stop-opacity="1"/>
+              <stop offset="100%" stop-color="#3b82f6" stop-opacity="0"/>
+            </linearGradient>
+            <linearGradient id="jetLineDim" x1="0" x2="1">
+              <stop offset="0%" stop-color="#475569" stop-opacity="0"/>
+              <stop offset="50%" stop-color="#475569" stop-opacity=".7"/>
+              <stop offset="100%" stop-color="#475569" stop-opacity="0"/>
+            </linearGradient>
+          </defs>
+          <!-- jet stream layers -->
+          <path class="jet-line jet-line--bg" d="M0 110 C 200 80, 380 200, 600 140 S 1000 80, 1200 130" stroke="url(#jetLineDim)" stroke-width="40" fill="none"/>
+          <path class="jet-line jet-line--bg" d="M0 250 C 250 200, 500 320, 750 240 S 1100 180, 1200 240" stroke="url(#jetLineDim)" stroke-width="60" fill="none"/>
+          <path class="jet-line jet-line--bg" d="M0 380 C 200 350, 400 440, 650 380 S 1050 320, 1200 360" stroke="url(#jetLineDim)" stroke-width="35" fill="none"/>
+
+          <!-- atlas optimal route -->
+          <path class="jet-route" d="M40 250 C 200 230, 350 130, 500 130 S 750 250, 900 240 S 1050 140, 1160 130" stroke="url(#jetLine)" stroke-width="2" fill="none" stroke-dasharray="6 6"/>
+
+          <!-- waypoints -->
+          <g class="jet-waypoints">
+            <circle cx="40" cy="250" r="5" fill="#fff"/>
+            <circle cx="500" cy="130" r="4" fill="#60a5fa"/>
+            <circle cx="900" cy="240" r="4" fill="#60a5fa"/>
+            <circle cx="1160" cy="130" r="5" fill="#fff"/>
+          </g>
+
+          <!-- airplane along path -->
+          <g class="jet-plane">
+            <circle r="14" fill="rgba(96,165,250,0.2)"/>
+            <circle r="6" fill="#60a5fa"/>
+            <path d="M-3 -8 L3 -8 L1 8 L-1 8 Z" fill="#fff" opacity="0.9"/>
+          </g>
+
+          <!-- annotations -->
+          <g class="jet-annotation">
+            <text x="60" y="278" fill="#94a3b8" font-size="11" font-family="Inter">SFO · 12:00</text>
+            <text x="1100" y="158" fill="#94a3b8" font-size="11" font-family="Inter" text-anchor="end">LHR · 16:30</text>
+            <text x="500" y="115" fill="#60a5fa" font-size="11" font-family="Inter" text-anchor="middle">+218 mph tailwind</text>
+          </g>
+        </svg>
+
+        <div class="jet-readout">
+          <div class="jet-readout__cell">
+            <span class="jet-readout__label">Headwind</span>
+            <span class="jet-readout__val">—</span>
+          </div>
+          <div class="jet-readout__cell">
+            <span class="jet-readout__label">Tailwind</span>
+            <span class="jet-readout__val jet-readout__val--up">+<span class="counter" data-count="218">218</span> mph</span>
+          </div>
+          <div class="jet-readout__cell">
+            <span class="jet-readout__label">Fuel saved</span>
+            <span class="jet-readout__val jet-readout__val--up"><span class="counter" data-count="34">34</span>%</span>
+          </div>
+          <div class="jet-readout__cell">
+            <span class="jet-readout__label">Route altitude</span>
+            <span class="jet-readout__val">FL620</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ SPEC GRID ============ -->
+    <section class="specs">
+      <header class="section-head">
+        <p class="eyebrow reveal">By the numbers</p>
+        <h2 class="section-title reveal">Atlas, in figures.</h2>
+      </header>
+
+      <div class="spec-grid">
+        <div class="spec spec--lg reveal">
+          <p class="spec__label">Range</p>
+          <p class="spec__num"><span class="counter" data-count="9400">9,400</span><span class="spec__unit">km</span></p>
+          <p class="spec__note">Tokyo → London on a single charge of fuel.</p>
+        </div>
+        <div class="spec reveal">
+          <p class="spec__label">Cruise speed</p>
+          <p class="spec__num">M<span class="counter" data-count="0.92" data-decimals="2">0.92</span></p>
+        </div>
+        <div class="spec reveal">
+          <p class="spec__label">Capacity</p>
+          <p class="spec__num"><span class="counter" data-count="180">180</span><span class="spec__unit">pax</span></p>
+        </div>
+        <div class="spec reveal">
+          <p class="spec__label">Cabin pressure</p>
+          <p class="spec__num"><span class="counter" data-count="4500">4,500</span><span class="spec__unit">ft</span></p>
+        </div>
+        <div class="spec spec--lg spec--accent reveal">
+          <p class="spec__label">CO₂ per passenger-mile</p>
+          <p class="spec__num spec__num--down"><span class="counter" data-count="-82">-82</span><span class="spec__unit">%</span></p>
+          <p class="spec__note">vs. a comparable long-haul flight today.</p>
+        </div>
+        <div class="spec reveal">
+          <p class="spec__label">Time saved · NYC → LHR</p>
+          <p class="spec__num"><span class="counter" data-count="2.4" data-decimals="1">2.4</span><span class="spec__unit">hr</span></p>
+        </div>
+        <div class="spec reveal">
+          <p class="spec__label">Noise on takeoff</p>
+          <p class="spec__num"><span class="counter" data-count="58">58</span><span class="spec__unit">dB</span></p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ ROUTES MAP ============ -->
+    <section class="routes" id="routes">
+      <header class="section-head section-head--left">
+        <p class="eyebrow reveal">Network</p>
+        <h2 class="section-title reveal">Twelve cities.<br/><span class="serif"><em>One sky.</em></span></h2>
+        <p class="section-sub reveal">We launch with a focused network connecting the world's most-flown corridors. New routes added quarterly.</p>
+      </header>
+
+      <div class="map reveal">
+        <div class="map__inner">
+          <svg viewBox="0 0 1000 500" preserveAspectRatio="xMidYMid meet" aria-hidden="true">
+            <defs>
+              <radialGradient id="globeGrad" cx="0.3" cy="0.3">
+                <stop offset="0%" stop-color="#1e293b"/>
+                <stop offset="100%" stop-color="#0a0a0f"/>
+              </radialGradient>
+            </defs>
+            <!-- continents (extremely abstracted) -->
+            <g fill="#1e293b" opacity="0.7">
+              <path d="M120 140 q 40 -20 90 -10 q 30 8 50 30 q -10 30 -40 40 q -50 5 -80 -10 q -30 -20 -20 -50 z"/>
+              <path d="M180 280 q 30 -10 60 10 q 20 30 -10 60 q -40 20 -60 -20 q -10 -30 10 -50 z"/>
+              <path d="M460 130 q 40 -20 80 -5 q 40 20 30 60 q -20 20 -60 20 q -50 -10 -60 -40 q 0 -25 10 -35 z"/>
+              <path d="M460 250 q 50 -5 70 30 q 10 40 -30 50 q -50 0 -50 -40 q -10 -30 10 -40 z"/>
+              <path d="M620 110 q 100 -20 180 0 q 50 30 30 80 q -40 30 -120 20 q -90 -10 -100 -60 q -10 -30 10 -40 z"/>
+              <path d="M780 280 q 40 -10 70 20 q 10 40 -30 50 q -50 -5 -50 -40 q -5 -25 10 -30 z"/>
+            </g>
+            <!-- meridians -->
+            <g stroke="#1e293b" stroke-width="0.5" fill="none" opacity="0.5">
+              <ellipse cx="500" cy="250" rx="450" ry="220"/>
+              <ellipse cx="500" cy="250" rx="450" ry="100"/>
+              <ellipse cx="500" cy="250" rx="450" ry="160"/>
+              <line x1="50" y1="250" x2="950" y2="250"/>
+              <line x1="500" y1="30" x2="500" y2="470"/>
+            </g>
+
+            <!-- routes (curved arcs) -->
+            <g class="map-routes" fill="none" stroke-linecap="round">
+              <path d="M180 200 Q 350 50 540 180" stroke="#60a5fa" stroke-width="1.5" stroke-dasharray="4 4"/>
+              <path d="M540 180 Q 700 60 800 180" stroke="#60a5fa" stroke-width="1.5" stroke-dasharray="4 4"/>
+              <path d="M180 200 Q 90 350 220 380" stroke="#60a5fa" stroke-width="1.5" stroke-dasharray="4 4"/>
+              <path d="M800 180 Q 880 280 820 350" stroke="#60a5fa" stroke-width="1.5" stroke-dasharray="4 4"/>
+              <path d="M540 180 Q 540 320 510 380" stroke="#60a5fa" stroke-width="1.5" stroke-dasharray="4 4"/>
+              <path d="M540 180 Q 780 280 800 180" stroke="#60a5fa" stroke-width="1.5" stroke-dasharray="4 4"/>
+              <path d="M180 200 Q 360 320 540 180" stroke="#60a5fa" stroke-width="1.5" stroke-dasharray="4 4"/>
+            </g>
+
+            <!-- city nodes -->
+            <g class="map-cities">
+              <g transform="translate(180,200)"><circle r="4" fill="#fff"/><circle r="9" fill="none" stroke="#fff" stroke-width="1" opacity=".4"/><text x="0" y="-14" fill="#fff" font-size="10" font-family="Inter" text-anchor="middle">SFO</text></g>
+              <g transform="translate(540,180)"><circle r="4" fill="#fff"/><circle r="9" fill="none" stroke="#fff" stroke-width="1" opacity=".4"/><text x="0" y="-14" fill="#fff" font-size="10" font-family="Inter" text-anchor="middle">LHR</text></g>
+              <g transform="translate(800,180)"><circle r="4" fill="#fff"/><circle r="9" fill="none" stroke="#fff" stroke-width="1" opacity=".4"/><text x="0" y="-14" fill="#fff" font-size="10" font-family="Inter" text-anchor="middle">HND</text></g>
+              <g transform="translate(220,380)"><circle r="3" fill="#94a3b8"/><text x="0" y="18" fill="#94a3b8" font-size="10" font-family="Inter" text-anchor="middle">GRU</text></g>
+              <g transform="translate(820,350)"><circle r="3" fill="#94a3b8"/><text x="0" y="18" fill="#94a3b8" font-size="10" font-family="Inter" text-anchor="middle">SYD</text></g>
+              <g transform="translate(510,380)"><circle r="3" fill="#94a3b8"/><text x="0" y="18" fill="#94a3b8" font-size="10" font-family="Inter" text-anchor="middle">JNB</text></g>
+              <g transform="translate(630,160)"><circle r="3" fill="#94a3b8"/><text x="0" y="-10" fill="#94a3b8" font-size="10" font-family="Inter" text-anchor="middle">FRA</text></g>
+              <g transform="translate(280,210)"><circle r="3" fill="#94a3b8"/><text x="0" y="-10" fill="#94a3b8" font-size="10" font-family="Inter" text-anchor="middle">JFK</text></g>
+              <g transform="translate(720,260)"><circle r="3" fill="#94a3b8"/><text x="0" y="18" fill="#94a3b8" font-size="10" font-family="Inter" text-anchor="middle">DXB</text></g>
+              <g transform="translate(760,220)"><circle r="3" fill="#94a3b8"/><text x="0" y="-10" fill="#94a3b8" font-size="10" font-family="Inter" text-anchor="middle">SIN</text></g>
+              <g transform="translate(420,160)"><circle r="3" fill="#94a3b8"/><text x="0" y="-10" fill="#94a3b8" font-size="10" font-family="Inter" text-anchor="middle">YYZ</text></g>
+              <g transform="translate(490,250)"><circle r="3" fill="#94a3b8"/><text x="0" y="18" fill="#94a3b8" font-size="10" font-family="Inter" text-anchor="middle">CDG</text></g>
+            </g>
+          </svg>
+        </div>
+
+        <ul class="route-list reveal">
+          <li><span>SFO → LHR</span><span>6h 12m</span><span class="route-list__save">−4h 38m</span></li>
+          <li><span>LHR → HND</span><span>5h 48m</span><span class="route-list__save">−5h 52m</span></li>
+          <li><span>JFK → CDG</span><span>3h 22m</span><span class="route-list__save">−3h 48m</span></li>
+          <li><span>SFO → SYD</span><span>7h 06m</span><span class="route-list__save">−6h 24m</span></li>
+          <li><span>DXB → JFK</span><span>6h 30m</span><span class="route-list__save">−5h 50m</span></li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ============ COMPARE ============ -->
+    <section class="compare">
+      <header class="section-head">
+        <p class="eyebrow reveal">The difference</p>
+        <h2 class="section-title reveal">Same destinations.<br/><span class="serif"><em>An entirely new flight.</em></span></h2>
+      </header>
+
+      <div class="compare-grid">
+        <article class="compare-card compare-card--them reveal">
+          <header>
+            <span class="compare-card__tag">Today</span>
+            <h3>Conventional long-haul</h3>
+          </header>
+          <ul>
+            <li><span>Cruise</span><strong>35–40,000 ft</strong></li>
+            <li><span>Speed</span><strong>Mach 0.78</strong></li>
+            <li><span>NYC → LHR</span><strong>7h 30m</strong></li>
+            <li><span>CO₂ / pax-mile</span><strong>112 g</strong></li>
+            <li><span>Routing</span><strong>Fixed corridors</strong></li>
+            <li><span>Turbulence</span><strong>Frequent</strong></li>
+            <li><span>Cabin pressure</span><strong>~8,000 ft equiv.</strong></li>
+          </ul>
+        </article>
+        <article class="compare-card compare-card--us reveal">
+          <header>
+            <span class="compare-card__tag compare-card__tag--accent">Atlas</span>
+            <h3>Stratospheric, AI-routed</h3>
+          </header>
+          <ul>
+            <li><span>Cruise</span><strong>60,000 ft</strong></li>
+            <li><span>Speed</span><strong>Mach 0.92</strong></li>
+            <li><span>NYC → LHR</span><strong>5h 06m</strong></li>
+            <li><span>CO₂ / pax-mile</span><strong>20 g</strong></li>
+            <li><span>Routing</span><strong>Live jetstream</strong></li>
+            <li><span>Turbulence</span><strong>Negligible</strong></li>
+            <li><span>Cabin pressure</span><strong>4,500 ft equiv.</strong></li>
+          </ul>
+        </article>
+      </div>
+    </section>
+
+    <!-- ============ SUSTAINABILITY ============ -->
+    <section class="impact" id="sustainability">
+      <header class="section-head">
+        <p class="eyebrow eyebrow--light reveal">Impact</p>
+        <h2 class="section-title section-title--light reveal">A flight path<br/><span class="serif"><em>worth taking.</em></span></h2>
+        <p class="section-sub section-sub--light reveal">Every Atlas seat sold removes more carbon than it emits — through certified offsets, sustainable fuel, and electrified ground operations.</p>
+      </header>
+
+      <div class="impact-grid">
+        <div class="impact-stat reveal">
+          <div class="impact-stat__bar">
+            <div class="impact-stat__fill" style="--w:18%"></div>
+            <div class="impact-stat__benchmark"></div>
+          </div>
+          <p class="impact-stat__label">CO₂ vs. industry average</p>
+          <p class="impact-stat__val"><span class="counter" data-count="18">18</span>%</p>
+        </div>
+        <div class="impact-stat reveal">
+          <div class="impact-stat__bar">
+            <div class="impact-stat__fill impact-stat__fill--green" style="--w:100%"></div>
+          </div>
+          <p class="impact-stat__label">Sustainable aviation fuel</p>
+          <p class="impact-stat__val"><span class="counter" data-count="100">100</span>%</p>
+        </div>
+        <div class="impact-stat reveal">
+          <div class="impact-stat__bar">
+            <div class="impact-stat__fill impact-stat__fill--green" style="--w:100%"></div>
+          </div>
+          <p class="impact-stat__label">Electric ground ops</p>
+          <p class="impact-stat__val"><span class="counter" data-count="100">100</span>%</p>
+        </div>
+        <div class="impact-stat reveal">
+          <div class="impact-stat__bar">
+            <div class="impact-stat__fill impact-stat__fill--blue" style="--w:140%"></div>
+          </div>
+          <p class="impact-stat__label">Net carbon impact</p>
+          <p class="impact-stat__val">−<span class="counter" data-count="40">40</span>%</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ RESERVE ============ -->
+    <section class="reserve" id="reserve">
+      <header class="section-head">
+        <p class="eyebrow reveal">Reserve</p>
+        <h2 class="section-title reveal">Three ways<br/><span class="serif"><em>to fly first.</em></span></h2>
+      </header>
+
+      <div class="tier-grid">
+        <article class="tier reveal">
+          <header>
+            <h3>Founder</h3>
+            <p>Limited to the first 100 reservations.</p>
+          </header>
+          <p class="tier__price">$2,500<span>/refundable deposit</span></p>
+          <ul>
+            <li>First-flight invitation</li>
+            <li>Priority on every new route</li>
+            <li>Lifetime status — Atlas Plus</li>
+            <li>Lock in launch fares for 5 years</li>
+          </ul>
+          <a class="btn btn--dark btn--block" href="#">Reserve as Founder</a>
+        </article>
+        <article class="tier tier--featured reveal">
+          <span class="tier__flag">Most reserved</span>
+          <header>
+            <h3>Voyager</h3>
+            <p>For the seasoned long-haul flyer.</p>
+          </header>
+          <p class="tier__price">$500<span>/refundable deposit</span></p>
+          <ul>
+            <li>Priority within first launch year</li>
+            <li>Atlas Plus status, year one</li>
+            <li>Companion pass on first flight</li>
+            <li>Members-only route announcements</li>
+          </ul>
+          <a class="btn btn--accent btn--block" href="#">Reserve as Voyager</a>
+        </article>
+        <article class="tier reveal">
+          <header>
+            <h3>Waitlist</h3>
+            <p>Be the first to hear when general booking opens.</p>
+          </header>
+          <p class="tier__price">Free<span>·  no commitment</span></p>
+          <ul>
+            <li>Earliest general-public access</li>
+            <li>Quarterly engineering updates</li>
+            <li>Invites to test-flight viewings</li>
+            <li>Early access to new routes</li>
+          </ul>
+          <a class="btn btn--dark btn--block" href="#">Join the waitlist</a>
+        </article>
+      </div>
+    </section>
+
+    <!-- ============ FAQ ============ -->
+    <section class="faq">
+      <header class="section-head section-head--left">
+        <p class="eyebrow reveal">Questions</p>
+        <h2 class="section-title reveal">Things you might<br/><span class="serif"><em>be wondering.</em></span></h2>
+      </header>
+      <div class="faq-list">
+        <details class="faq-item reveal" open>
+          <summary>When does Atlas enter service?<span class="faq-item__plus" aria-hidden="true"></span></summary>
+          <div class="faq-item__body">
+            <p>Atlas is currently in flight-test phase. We're targeting commercial entry into service in late 2028, with our first commercial corridor connecting San Francisco and London.</p>
+          </div>
+        </details>
+        <details class="faq-item reveal">
+          <summary>Is flying at 60,000 feet safe?<span class="faq-item__plus" aria-hidden="true"></span></summary>
+          <div class="faq-item__body">
+            <p>The stratosphere is in many ways the safest layer of the atmosphere — there's no weather, no other commercial traffic, and far less turbulence. Atlas's pressurization, materials, and life-support systems are certified to FAA Part 25 amendments specifically written for stratospheric operation.</p>
+          </div>
+        </details>
+        <details class="faq-item reveal">
+          <summary>What's the deposit refund policy?<span class="faq-item__plus" aria-hidden="true"></span></summary>
+          <div class="faq-item__body">
+            <p>All deposits are fully refundable at any time before your first booked flight. We hold them in a regulated escrow account.</p>
+          </div>
+        </details>
+        <details class="faq-item reveal">
+          <summary>How loud is takeoff for surrounding communities?<span class="faq-item__plus" aria-hidden="true"></span></summary>
+          <div class="faq-item__body">
+            <p>Atlas takes off using its electric powertrain alone, then transitions to hybrid cruise above 25,000 feet. Ground-level noise is roughly equivalent to highway traffic at 50 meters — about 58 dB.</p>
+          </div>
+        </details>
+        <details class="faq-item reveal">
+          <summary>Will Atlas fly to my city?<span class="faq-item__plus" aria-hidden="true"></span></summary>
+          <div class="faq-item__body">
+            <p>We're launching with twelve cities and adding routes quarterly. Reservation holders vote on the next destination each quarter.</p>
+          </div>
+        </details>
+      </div>
+    </section>
+
+    <!-- ============ FINAL CTA ============ -->
+    <section class="finale">
+      <div class="finale__bg" aria-hidden="true"></div>
+      <div class="finale__content">
+        <h2 class="reveal">The next chapter of flight<br/>begins above the weather.</h2>
+        <p class="reveal">Join the first 1,000 to fly.</p>
+        <form class="finale__form reveal" onsubmit="event.preventDefault(); this.querySelector('button').textContent='Welcome aboard ✓'; this.querySelector('button').disabled=true;">
+          <input type="email" required placeholder="Enter your email" aria-label="Email address" />
+          <button class="btn btn--light" type="submit">Join the waitlist</button>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="footer__top">
+      <div class="footer__brand">
+        <a class="nav__brand" href="#top">
+          <svg class="nav__mark" viewBox="0 0 32 32" width="22" height="22"><circle cx="16" cy="16" r="15" fill="none" stroke="currentColor" stroke-width="1"/><circle cx="16" cy="16" r="3" fill="currentColor"/><path d="M16 4 L18 16 L16 28 L14 16 Z" fill="currentColor" opacity="0.7"/></svg>
+          <span>GEO</span>
+        </a>
+        <p>Stratospheric flight, AI-routed. Headquartered in Mojave, CA.</p>
+      </div>
+      <div class="footer__cols">
+        <div>
+          <h4>Aircraft</h4>
+          <a href="#atlas">Atlas</a>
+          <a href="#technology">Technology</a>
+          <a href="#specs">Specifications</a>
+          <a href="#safety">Safety</a>
+        </div>
+        <div>
+          <h4>Network</h4>
+          <a href="#routes">Routes</a>
+          <a href="#schedule">Schedule</a>
+          <a href="#airports">Airports</a>
+          <a href="#partners">Partners</a>
+        </div>
+        <div>
+          <h4>Company</h4>
+          <a href="#about">About</a>
+          <a href="#careers">Careers</a>
+          <a href="#press">Press</a>
+          <a href="#investors">Investors</a>
+        </div>
+        <div>
+          <h4>Reserve</h4>
+          <a href="#reserve">Reservations</a>
+          <a href="#waitlist">Waitlist</a>
+          <a href="#contact">Contact</a>
+          <a href="#faq">FAQ</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer__bot">
+      <span>© 2026 GEO Aviation, Inc.</span>
+      <span>Mojave · Toulouse · Singapore</span>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
